@@ -16,3 +16,6 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+Route.group(() => {
+    Route.resource('song', 'SongController').apiOnly()
+}).prefix('api')
