@@ -15,4 +15,13 @@
 
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+Route.group(() => {
+    Route.get('', 'HomeController.index')
+    Route.get('login/:username/:password', 'LoginController.login')
+
+    Route.get('songwriters', 'SongwriterController.index')
+    Route.post('songwriters', 'SongwriterController.create')
+    Route.get('songwriters/:id', 'SongwriterController.show')
+    Route.put('songwriters/:id', 'SongwriterController.update')
+    Route.delete('songwriters:/id', 'SongwriterController.delete')
+}).prefix('api')
